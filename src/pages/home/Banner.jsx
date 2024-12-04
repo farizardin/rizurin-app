@@ -3,6 +3,7 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Foreground from '../../components/Foreground';
 import Background from '../../components/Background';
 import Frame from '../../components/Frame';
+import Particle from '../../components/Particles';
 
 const Banner = () => {
   const background = {
@@ -29,6 +30,13 @@ const Banner = () => {
       scale: [1, 2],
       shouldAlwaysCompleteAnimation: true,
       children: (<Foreground/>)
+    };
+
+    const particle = {
+      translateY: [0, 10],
+      scale: [1, 2],
+      shouldAlwaysCompleteAnimation: true,
+      children: (<Particle/>)
     };
 
     const frame = [
@@ -70,7 +78,7 @@ const Banner = () => {
     };
   return (
     <ParallaxBanner
-      layers={[background, ...frame, foreground, gradientOverlay, headline]}
+      layers={[background, ...frame, foreground, particle,gradientOverlay, headline]}
       className="full"
     />
   );
