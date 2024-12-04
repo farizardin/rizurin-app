@@ -71,11 +71,12 @@ const Banner = () => {
     ]
   
     const gradientOverlay = {
-      opacity: [0.2, 0.5, "easeOutCubic"],
+      opacity: [0.1, 0.3, "easeOutCubic"],
       shouldAlwaysCompleteAnimation: true,
       expanded: false,
       children: (<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.95)', width: '100%', height: '100%' }}/>),
     };
+    
   return (
     <ParallaxBanner
       layers={[background, ...frame, foreground, particle,gradientOverlay, headline]}
