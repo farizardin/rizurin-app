@@ -1,7 +1,7 @@
 import React from 'react';
 import { ParallaxBanner } from "react-scroll-parallax";
-import Wave from './Wave';
-import Wave2 from './Wave2';
+import Foreground from '../../components/Foreground';
+import Background from '../../components/Background';
 import Frame from '../../components/Frame';
 
 const Banner = () => {
@@ -9,7 +9,7 @@ const Banner = () => {
       translateY: [0, 40],
       scale: [1, 2],
       shouldAlwaysCompleteAnimation: true,
-      children: (<Wave2/>)
+      children: (<Background/>)
     };
 
     const headline = {
@@ -28,7 +28,7 @@ const Banner = () => {
       translateY: [0, 10],
       scale: [1, 2],
       shouldAlwaysCompleteAnimation: true,
-      children: (<Wave/>)
+      children: (<Foreground/>)
     };
 
     const frame = [

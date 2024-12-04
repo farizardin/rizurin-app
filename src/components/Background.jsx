@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Wave2 = () => {
+const Background = () => {
   return (
     <svg id="visual" viewBox="0 0 1920 1080" width="1920" height="1080" version="1.1">
         <defs>
@@ -14,4 +14,4 @@ const Wave2 = () => {
   );
 };
 
-export default Wave2;
+export default Background;
