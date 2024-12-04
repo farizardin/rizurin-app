@@ -2,6 +2,7 @@ import React from 'react';
 import { ParallaxBanner } from "react-scroll-parallax";
 import Wave from './Wave';
 import Wave2 from './Wave2';
+import Frame from '../components/Frame';
 
 const Banner = () => {
   const background = {
@@ -18,7 +19,7 @@ const Banner = () => {
       expanded: false,
       children: (
         <div className="inset center">
-          <h1 className="headline white">RIZURIN</h1>
+          <h1 className="headline white">RiZU</h1>
         </div>
       ),
     };
@@ -29,6 +30,13 @@ const Banner = () => {
       shouldAlwaysCompleteAnimation: true,
       children: (<Wave/>)
     };
+
+    const frame = {
+      translateY: [0, 10],
+      scale: [1, 1.5],
+      shouldAlwaysCompleteAnimation: true,
+      children: (<Frame rotation={20}/>)
+    }
   
     const gradientOverlay = {
       opacity: [0, 0.5, "easeOutCubic"],
@@ -38,7 +46,7 @@ const Banner = () => {
     };
   return (
     <ParallaxBanner
-      layers={[background, foreground, headline]}
+      layers={[background, frame, foreground, headline]}
       className="full"
     />
   );
