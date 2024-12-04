@@ -2,7 +2,7 @@ import React from 'react';
 import { ParallaxBanner } from "react-scroll-parallax";
 import Wave from './Wave';
 import Wave2 from './Wave2';
-import Frame from '../components/Frame';
+import Frame from '../../components/Frame';
 
 const Banner = () => {
   const background = {
