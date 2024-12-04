@@ -1,6 +1,6 @@
 import React from "react";
 
-const Frame = ({rotation = 45, image = "https://via.placeholder.com/150"}) => {
+const Frame = ({rotation = 45, image = "https://via.placeholder.com/150", maxWidth = "200px"}) => {
   const frameStyle = {
     display: "inline-block",
     padding: "10px",
@@ -13,7 +13,7 @@ const Frame = ({rotation = 45, image = "https://via.placeholder.com/150"}) => {
 
   const imageStyle = {
     display: "block",
-    maxWidth: "200px",
+    maxWidth: maxWidth,
     height: "auto", // Maintain aspect ratio
   };
 
