@@ -18,7 +18,7 @@ const Frame = ({rotation = 45}) => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh" }}>
+    // <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh" }}>
       <div style={frameStyle}>
         <img
           src="https://via.placeholder.com/150" // Replace with your image URL
@@ -26,7 +26,7 @@ const Frame = ({rotation = 45}) => {
           style={imageStyle}
         />
       </div>
-    </div>
+    // </div>
   );
 };
 

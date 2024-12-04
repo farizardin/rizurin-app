@@ -31,12 +31,36 @@ const Banner = () => {
       children: (<Wave/>)
     };
 
-    const frame = {
-      translateY: [0, 10],
-      scale: [1, 1.5],
-      shouldAlwaysCompleteAnimation: true,
-      children: (<Frame rotation={20}/>)
-    }
+    const frame = [
+        {
+        translateY: [53, -20],
+        translateX: [20, 80],
+        scale: [1.3, 3],
+        shouldAlwaysCompleteAnimation: true,
+        children: (<Frame rotation={35}/>)
+      },
+      {
+        translateY: [30, -20],
+        translateX: [40, 100],
+        scale: [1.3, 3],
+        shouldAlwaysCompleteAnimation: true,
+        children: (<Frame rotation={20}/>)
+      },
+      {
+        translateY: [45, -20],
+        translateX: [60, 160],
+        scale: [1.3, 3],
+        shouldAlwaysCompleteAnimation: true,
+        children: (<Frame rotation={-20}/>)
+      },
+      {
+        translateY: [55, -20],
+        translateX: [80, 160],
+        scale: [1.3, 3],
+        shouldAlwaysCompleteAnimation: true,
+        children: (<Frame rotation={-45}/>)
+      }
+    ]
   
     const gradientOverlay = {
       opacity: [0, 0.5, "easeOutCubic"],
@@ -46,7 +70,7 @@ const Banner = () => {
     };
   return (
     <ParallaxBanner
-      layers={[background, frame, foreground, headline]}
+      layers={[background, ...frame, foreground, headline]}
       className="full"
     />
   );
