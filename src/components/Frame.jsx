@@ -1,6 +1,6 @@
 import React from "react";
 
-const Frame = ({rotation = 45}) => {
+const Frame = ({rotation = 45, image = "https://via.placeholder.com/150"}) => {
   const frameStyle = {
     display: "inline-block",
     padding: "10px",
@@ -13,7 +13,7 @@ const Frame = ({rotation = 45}) => {
 
   const imageStyle = {
     display: "block",
-    maxWidth: "100%",
+    maxWidth: "200px",
     height: "auto", // Maintain aspect ratio
   };
 
@@ -21,7 +21,7 @@ const Frame = ({rotation = 45}) => {
     // <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh" }}>
       <div style={frameStyle}>
         <img
-          src="https://via.placeholder.com/150" // Replace with your image URL
+          src={image} // Replace with your image URL
           alt="Framed Example"
           style={imageStyle}
         />
