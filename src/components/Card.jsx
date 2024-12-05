@@ -1,19 +1,38 @@
 import Card from 'react-bootstrap/Card';
 import { Modal } from 'react-bootstrap';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function ImageCard({ image = "holder.js/100px180?text=Image cap", title = "LOREM IPSUM" }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [cardWidth, setCardWidth] = useState('20%'); // Initial width is 20% of the window width
+
+  // Update card width based on window size
+  const handleResize = () => {
+    const width = window.innerWidth;
+    // Calculate 20% of the window width
+    const newCardWidth = (width * 0.2) + 'px'; // Example: 20% of window width
+    setCardWidth(newCardWidth);
+  };
+
+  // Use effect to add event listener on component mount and clean up on unmount
+  useEffect(() => {
+    handleResize(); // Initial resize when component mounts
+    window.addEventListener('resize', handleResize); // Listen for resize events
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Clean up listener on unmount
+    };
+  }, []);
   return (
     <div>
-      <Card style={{width: '18rem', position: "relative", overflow: "hidden" }} className='hover-card'
+      <Card style={{maxWidth: cardWidth, minWidth: "150px", position: "relative", overflow: "hidden" }} className='hover-card'
         onClick={handleShow}
       >
         <Card.Img variant="top" src={image} />
-        <Card.Body className='artwork-card-body'>
-          <Card.Title className='center' style={{color: "white"}}>{title}</Card.Title>
+        <Card.Body className='artwork-card-body' style={{padding: "6px"}}>
+          <Card.Title className='center' style={{color: "white", fontSize: "10pt"}}>{title}</Card.Title>
         </Card.Body>
       </Card>
       <Modal
