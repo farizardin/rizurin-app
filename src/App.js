@@ -62,8 +62,14 @@ function App() {
         <Banner/>
       </ParallaxProvider>
       {/* <ScrollReveal/> */}
-      <Artworks/>
-      <YoutubePost/>
+      <div style={{height: "100vh", background: "#e4c5ff"}}>
+        <div style={{paddingTop: "5%"}}>
+          <Artworks/>
+        </div>
+        <div>
+          <YoutubePost/>
+        </div>
+      </div>
     </div>
 
     // <div style={{ position: "relative", height: "100vh", width: "100%" }}>
