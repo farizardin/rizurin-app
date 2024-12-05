@@ -66,7 +66,7 @@ function App() {
         <div style={{paddingTop: "5%"}}>
           <Artworks/>
         </div>
-        <div>
+        <div style={{paddingBottom: "5%"}}>
           <YoutubePost/>
         </div>
       </div>
