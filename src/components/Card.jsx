@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import React, { useEffect, useRef, useState } from "react";
 
-function ImageCard({ image = "holder.js/100px180?text=Image cap" }) {
+function ImageCard({ image = "holder.js/100px180?text=Image cap", title = "LOREM IPSUM" }) {
   const [isVisible, setIsVisible] = useState(false);
   const divRef = useRef(null);
 
@@ -27,14 +27,10 @@ function ImageCard({ image = "holder.js/100px180?text=Image cap" }) {
     };
   }, []);
   return (
-    <Card style={{width: '18rem' }}>
+    <Card style={{width: '18rem', position: "relative", overflow: "hidden" }}>
       <Card.Img variant="top" src={image} />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+      <Card.Body className='artwork-card-body'>
+        <Card.Title className='center' style={{color: "white"}}>{title}</Card.Title>
       </Card.Body>
     </Card>
   );

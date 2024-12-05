@@ -15,7 +15,7 @@ function Particle() {
     }, []);
 
     const particlesLoaded = (container) => {
-        console.log(container);
+        return container;
     };
 
     return (<Particles

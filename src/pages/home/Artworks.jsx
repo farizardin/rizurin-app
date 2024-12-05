@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ImageCard from "../../components/Card";
 
-function YoutubePost() {
+function Artworks() {
   return (
     <div
       style={{height: "50vh"}}
@@ -27,4 +27,4 @@ function YoutubePost() {
   );
 }
 
-export default YoutubePost;
+export default Artworks;

@@ -2,10 +2,8 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Banner from './pages/home/Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import ScrollReveal from './components/ScrollReveal';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import YoutubePost from './pages/home/YoutubePost';
+import Artworks from './pages/home/Artworks';
 
 function App() {  
   // const [playerData, setPlayerData] = useState(null);
@@ -63,7 +61,7 @@ function App() {
         <Banner/>
       </ParallaxProvider>
       {/* <ScrollReveal/> */}
-      <YoutubePost/>
+      <Artworks/>
     </div>
 
     // <div style={{ position: "relative", height: "100vh", width: "100%" }}>
