@@ -4,6 +4,7 @@ import Banner from './pages/home/Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import React, { useEffect, useState } from 'react';
 import Artworks from './pages/home/Artworks';
+import YoutubePost from './pages/home/YoutubePost';
 
 function App() {  
   // const [playerData, setPlayerData] = useState(null);
@@ -62,6 +63,7 @@ function App() {
       </ParallaxProvider>
       {/* <ScrollReveal/> */}
       <Artworks/>
+      <YoutubePost/>
     </div>
 
     // <div style={{ position: "relative", height: "100vh", width: "100%" }}>

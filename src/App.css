@@ -96,3 +96,40 @@ body {
   padding: 10px;
   text-align: center;
 }
+
+.hover-card {
+  box-shadow: 0 10px 13px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.hover-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.custom-backdrop {
+  /* background-color: transparent !important; */
+}
+
+/* Modal content styling */
+.custom-modal-content {
+  background: none; /* Removes modal's default background */
+  border: none; /* Removes modal border */
+  box-shadow: none; /* Removes shadow */
+  overflow: hidden; /* Ensures no overflow issues */
+}
+
+/* Close button styling */
+.custom-modal-header {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  border-bottom: none !important;
+}
+
+.btn-close{
+  color: white !important;
+}
