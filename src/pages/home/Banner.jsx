@@ -27,7 +27,7 @@ const Banner = () => {
       expanded: false,
       children: (
         <div className="inset center">
-          <h2 className="headline white">RiZU</h2>
+          <h2 className="headline" style={{color: "lavender"}}>RiZU</h2>
         </div>
       ),
     };

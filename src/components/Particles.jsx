@@ -71,10 +71,10 @@ function Particle() {
                   value: 0.5,
               },
               shape: {
-                type: "triangle",
+                type: "circle",
               },
               rotate: {
-                value: { x: 0, y: 0, z: 45 },
+                value: { x: 0, y: 0, z: 0 },
                 animation: {
                   enable: true, // Enable rotation animation
                   speed: 10, // Speed of rotation
@@ -83,10 +83,10 @@ function Particle() {
                 },
               },
               size: {
-                  value: { min: 5, max: 30 },
+                  value: { min: 0, max: 10 },
                   animation: {
                     enable: true, // Enable rotation animation
-                    speed: 10, // Speed of rotation
+                    speed: 50, // Speed of rotation
                     sync: false, // Different rotation speed for each particle
                     easing: "linear", // Smooth rotation easing
                   },
