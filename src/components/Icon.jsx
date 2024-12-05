@@ -17,7 +17,7 @@ const Icon = ({image = "https://via.placeholder.com/150", maxWidth = "200px"}) =
 
   return (
     // <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh" }}>
-      <div style={frameStyle}>
+      <div style={frameStyle} className="hover-icon">
         <img
           src={image} // Replace with your image URL
           alt="Framed Example"

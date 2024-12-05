@@ -96,7 +96,7 @@ const Banner = () => {
 
   return (
     <ParallaxBanner
-      layers={[background, background2, foreground, particle, gradientOverlay, dock, headline]}
+      layers={[background, background2, foreground, particle, gradientOverlay, headline, dock]}
       className="full"
     />
   );
