@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { Modal } from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
 
-function ImageCard({ image = "holder.js/100px180?text=Image cap", title = "LOREM IPSUM" }) {
+function ImageCard({ image = "holder.js/100px180?text=Image cap", imageFull = "holder.js/100px180?text=Image cap", title = "LOREM IPSUM" }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -46,7 +46,7 @@ function ImageCard({ image = "holder.js/100px180?text=Image cap", title = "LOREM
         <Modal.Header closeButton className="custom-modal-header" style={{backgroundColor: "rgba(0,0,0,0)"}}/>
         <Modal.Body className="p-0" style={{backgroundColor: "rgba(0,0,0,0) !important"}}>
           <img
-            src={image}
+            src={imageFull}
             alt={title}
             style={{ width: '100%', height: 'auto' }}
           />
