@@ -23,6 +23,30 @@ function Artworks() {
           <Col md={3} sm={6} xs={6} className="center mt-4">
             <ImageCard image={"/images/art4.png"} title="Vestia Zeta"/>
           </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art5.jpg"} title="Emma Verde"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art6.jpg"} title="Kurosawa Ruby"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art7.png"} title="Ichigaya Arisa"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art8.jpg"} title="Uehara Ayumu"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art9.png"} title="Nakano Yotsuba"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art10.jpg"} title="Setsuna Yuki"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art11.png"} title="Watanabe You"/>
+          </Col>
+          <Col md={3} sm={6} xs={6} className="center mt-4">
+            <ImageCard image={"/images/art12.png"} title="Shibuya Kanon"/>
+          </Col>
         </Row>
       </div>
     </div>
