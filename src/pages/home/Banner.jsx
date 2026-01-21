@@ -10,7 +10,7 @@ const Banner = () => {
   const background = {
     shouldAlwaysCompleteAnimation: true,
     expanded: false,
-    children: (<div style={{ backgroundColor: 'rgb(25, 0, 34)', width: '100%', height: '100%' }} />),
+    children: (<div style={{ backgroundColor: 'rgb(20, 10, 35)', width: '100%', height: '100%' }} />),
   };
 
   const background2 = {

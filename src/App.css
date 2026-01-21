@@ -72,7 +72,7 @@ body {
   /* adjust size as needed */
   height: 1000px;
   background: radial-gradient(circle at bottom left,
-      rgba(64, 205, 224, 0.171) 0%,
+      rgba(64, 205, 224, 0.1) 0%,
       rgba(64, 224, 208, 0) 100%);
   filter: blur(120px);
   opacity: 0.9;
