@@ -93,14 +93,11 @@ function ServiceCard({ icon: Icon, title, desc }) {
       className={`service-card scroll-animate ${isVisible ? "in-view" : ""}`}
       onMouseMove={handleMouseMove}
     >
-      {/* Icon layanan */}
       <div className="service-icon">
         <Icon />
       </div>
 
       <h3>{title}</h3>
-
-      {/* Deskripsi dipisah per line */}
       <ul className="service-desc">
         {desc.map((item, idx) => (
           <li key={idx}>{item}</li>
@@ -110,11 +107,7 @@ function ServiceCard({ icon: Icon, title, desc }) {
   );
 }
 
-
-/* Tech stack icons berjalan */
 function TechStack() {
-  const [ref, isVisible] = useInView(0.2);
-
   return (
     <div>
       <div className="tech-stack-title-wrapper">
