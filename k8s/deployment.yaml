@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rizurin-app
+  labels:
+    app: rizurin-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rizurin-app
+  template:
+    metadata:
+      labels:
+        app: rizurin-app
+    spec:
+      containers:
+        - name: rizurin-app
+          image: farizardin/rizurin-app:latest
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: regcred
