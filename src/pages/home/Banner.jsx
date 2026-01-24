@@ -2,9 +2,9 @@ import React from 'react';
 import { ParallaxBanner } from "react-scroll-parallax";
 import Foreground from '../../components/Foreground';
 import Background from '../../components/Background';
-import Frame from '../../components/Frame';
+// import Frame from '../../components/Frame';
 import Particle from '../../components/Particles';
-import Dock from '../../components/Dock';
+// import Dock from '../../components/Dock';
 
 const Banner = () => {
   const background = {
