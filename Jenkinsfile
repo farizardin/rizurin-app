@@ -5,12 +5,12 @@ pipeline {
     NODE_ENV = 'production'
 
     APP_NAME   = 'rizurin-app'
-    IMAGE_NAME = 'farizardin/rizurin-app'
+    IMAGE_NAME = 'rizurin/rizurin-app'
     IMAGE_TAG  = "${BUILD_NUMBER}"
 
-    DOCKER_REGISTRY        = 'docker.io'
+    DOCKER_REGISTRY        = 'harbor.rizurin.my.id'
     IMAGE_FULL             = "${DOCKER_REGISTRY}/${IMAGE_NAME}"
-    DOCKER_CREDENTIALS_ID  = 'dockerhub-cred'
+    DOCKER_CREDENTIALS_ID  = 'harbor-cred'
     KUBECONFIG_CRED        = 'k3s-kubeconfig'
     NAMESPACE              = 'default'
   }
@@ -107,10 +107,10 @@ pipeline {
 
   post {
     success {
-      echo '✅ CI/CD SUCCESS — image deployed to k3s'
+      echo 'SUCCESS: image deployed to k3s'
     }
     failure {
-      echo '❌ CI/CD FAILED'
+      echo 'FAILED: check the logs above for details'
     }
     always {
       cleanWs()
