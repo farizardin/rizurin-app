@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  options {
+    disableConcurrentBuilds(abortPrevious: true)
+  }
+
   environment {
     NODE_ENV = 'production'
 
