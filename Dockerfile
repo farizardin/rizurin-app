@@ -22,8 +22,8 @@ RUN node -v && npm -v && npm ci
 COPY . .
 RUN npm run build
 
-# production image using nginx on bullseye
-FROM nginx:stable-bullseye AS production
+
+FROM nginx:stable-bookworm AS production
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
