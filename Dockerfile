@@ -8,11 +8,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package*.json ./
 
 # install build tools for native modules if needed
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update || apt-get update \
+ && apt-get install -y --no-install-recommends \
     python3 \
     build-essential \
     ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN node -v && npm -v && npm ci
 
