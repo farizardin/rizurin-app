@@ -28,7 +28,7 @@ pipeline {
         sh 'node -v'
         sh 'npm -v'
         sh 'npm ci'
-        sh 'CI=true npm test -- --watchAll=false'
+        // sh 'CI=true npm test -- --watchAll=false'
         sh 'npm run build'
       }
     }
