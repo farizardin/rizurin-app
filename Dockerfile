@@ -1,16 +1,21 @@
 # ---- Build stage ----
-FROM node:18-bullseye AS builder
+FROM node:18-alpine AS build
+
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+# optional: jika ada native modules yang butuh compile
+RUN apk add --no-cache python3 make g++
 
+# copy package files first to leverage cache
+COPY package*.json ./
+RUN node -v && npm -v && npm ci
+
+# copy rest and build
 COPY . .
 RUN npm run build
 
-# ---- Runtime stage ----
-FROM nginx:alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-
+# production image
+FROM nginx:stable-alpine AS production
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
