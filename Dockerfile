@@ -1,21 +1,27 @@
 # ---- Build stage ----
-FROM node:18-alpine AS build
+FROM node:18-bullseye AS build
 
 WORKDIR /app
-
-# optional: jika ada native modules yang butuh compile
-RUN apk add --no-cache python3 make g++
+ENV PATH /app/node_modules/.bin:$PATH
 
 # copy package files first to leverage cache
 COPY package*.json ./
+
+# install build tools for native modules if needed
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    build-essential \
+    ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN node -v && npm -v && npm ci
 
-# copy rest and build
+# copy source and build
 COPY . .
 RUN npm run build
 
-# production image
-FROM nginx:stable-alpine AS production
+# production image using nginx on bullseye
+FROM nginx:stable-bullseye AS production
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
