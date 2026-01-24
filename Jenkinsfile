@@ -17,12 +17,6 @@ pipeline {
 
   stages {
 
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-
     stage('Install & Test & Build React') {
       agent {
         docker {
@@ -66,6 +60,9 @@ pipeline {
     }
 
     stage('Deploy to k3s') {
+      when {
+        branch 'master'
+      }
       steps {
         withCredentials([file(credentialsId: KUBECONFIG_CRED, variable: 'KUBECONFIG')]) {
           sh """
