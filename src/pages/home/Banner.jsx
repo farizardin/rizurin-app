@@ -46,46 +46,44 @@ const Banner = () => {
     children: (<Particle />)
   };
 
-  const frame = [
-    {
-      translateY: [45, -20],
-      translateX: [15, 80],
-      scale: [1.3, 3],
-      shouldAlwaysCompleteAnimation: true,
-      children: (<Frame rotation={35} image='/images/art1.png' />)
-    },
-    {
-      translateY: [32, -20],
-      translateX: [45, 100],
-      scale: [1.3, 3],
-      shouldAlwaysCompleteAnimation: true,
-      children: (<Frame rotation={20} image='/images/art3.png' />)
-    },
-    {
-      translateY: [50, -20],
-      translateX: [70, 160],
-      scale: [1.3, 3],
-      shouldAlwaysCompleteAnimation: true,
-      children: (<Frame rotation={-20} image='/images/art2.png' />)
-    },
-    {
-      translateY: [40, -20],
-      translateX: [100, 160],
-      scale: [1.3, 3],
-      shouldAlwaysCompleteAnimation: true,
-      children: (<Frame rotation={-45} image='/images/art4.png' />)
-    }
-  ];
+  // const frame = [
+  //   {
+  //     translateY: [45, -20],
+  //     translateX: [15, 80],
+  //     scale: [1.3, 3],
+  //     shouldAlwaysCompleteAnimation: true,
+  //     children: (<Frame rotation={35} image='/images/art1.png' />)
+  //   },
+  //   {
+  //     translateY: [32, -20],
+  //     translateX: [45, 100],
+  //     scale: [1.3, 3],
+  //     shouldAlwaysCompleteAnimation: true,
+  //     children: (<Frame rotation={20} image='/images/art3.png' />)
+  //   },
+  //   {
+  //     translateY: [50, -20],
+  //     translateX: [70, 160],
+  //     scale: [1.3, 3],
+  //     shouldAlwaysCompleteAnimation: true,
+  //     children: (<Frame rotation={-20} image='/images/art2.png' />)
+  //   },
+  //   {
+  //     translateY: [40, -20],
+  //     translateX: [100, 160],
+  //     scale: [1.3, 3],
+  //     shouldAlwaysCompleteAnimation: true,
+  //     children: (<Frame rotation={-45} image='/images/art4.png' />)
+  //   }
+  // ];
 
-  const dock = {
-    translateY: [70, 50],
-    scale: [1, 0.5],
-    shouldAlwaysCompleteAnimation: true,
-    expanded: false,
-    expanded: false,
-    shouldAlwaysCompleteAnimation: true,
-    children: (<Dock />)
-  };
+  // const dock = {
+  //   translateY: [70, 50],
+  //   scale: [1, 0.5],
+  //   shouldAlwaysCompleteAnimation: true,
+  //   expanded: false,
+  //   children: (<Dock />)
+  // };
 
   const gradientOverlay = {
     opacity: [0.1, 0.3, "easeOutCubic"],
