@@ -2,9 +2,6 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Banner from './pages/home/Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import React, { useEffect, useState } from 'react';
-import Artworks from './pages/home/Artworks';
-import YoutubePost from './pages/home/YoutubePost';
 import Profiles from './pages/home/Profiles';
 
 function App() {
