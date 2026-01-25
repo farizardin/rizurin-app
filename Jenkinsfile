@@ -10,7 +10,7 @@ pipeline {
     IMAGE_NAME = 'rizurin/rizurin-app'
     IMAGE_TAG  = "${BUILD_NUMBER}"
 
-    DOCKER_REGISTRY       = 'harbor.rizurin.my.id'
+    DOCKER_REGISTRY       = '192.168.8.60:8085'
     IMAGE_FULL            = "${DOCKER_REGISTRY}/${IMAGE_NAME}"
     DOCKER_CREDENTIALS_ID = 'harbor-cred'
     KUBECONFIG_CRED       = 'k3s-kubeconfig'
