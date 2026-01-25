@@ -14,6 +14,8 @@ function Particle() {
         });
     }, []);
 
+    if (!init) return null; // 🔥 FIX UTAMA
+
     const particlesLoaded = (container) => {
         return container;
     };

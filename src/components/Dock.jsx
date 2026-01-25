@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
 import Icon from "./Icon";
 const Dock = () => {
   return (
     <div style={{scale: "50%", justifyContent: "center", width: "100%", display: "grid", zIndex: "99999" }}>
-      <div style={{ borderRadius: "20px",padding: "15px", display: "flex", justifyContent: "center", alignItems: "center", width: "auto", display: "inline-flex", backgroundColor: "rgba(0,0,0,0.2)"}}>
+      <div style={{ borderRadius: "20px",padding: "15px", justifyContent: "center", alignItems: "center", width: "auto", display: "inline-flex", backgroundColor: "rgba(0,0,0,0.2)"}}>
         <a href={"https://www.instagram.com/rizunaisu"} target="_blank" rel="noopener noreferrer">
           <div style={{paddingRight: "10px", paddingLeft: "10px"}}>
             <Icon maxWidth={"70px"} image="/images/instagram_icon.png"/>

@@ -1,28 +1,31 @@
-# Multi-stage Dockerfile for building the Create React App and serving with nginx
-
 # ---- Build stage ----
 FROM node:18-alpine AS build
+
 WORKDIR /app
+ENV PATH="/app/node_modules/.bin:$PATH"
 
-# install dependencies based on package-lock/package.json
-COPY package.json package-lock.json* ./
-RUN npm ci --silent
+# install build deps (kalau ada native module)
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ 
 
-# copy source and build
+# copy deps first (cache friendly)
+COPY package*.json ./
+RUN npm ci
+
+# copy source & build
 COPY . .
 RUN npm run build
 
+
 # ---- Production stage ----
-FROM nginx:stable-alpine
+FROM nginx:alpine
 
-# Remove default nginx static content
-RUN rm -rf /usr/share/nginx/html/*
+# remove default config if needed
+# RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy build from previous stage
 COPY --from=build /app/build /usr/share/nginx/html
-
-# Replace default nginx config with one suited for SPA routing
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
