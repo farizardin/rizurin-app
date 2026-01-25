@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: rizurin-app
-          image: rizurin/rizurin-app:latest
+          image: 192.168.8.60:8085/rizurin/rizurin-app:latest
           ports:
             - containerPort: 3000
       imagePullSecrets:
