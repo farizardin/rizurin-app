@@ -14,7 +14,7 @@ pipeline {
     IMAGE_FULL            = "${DOCKER_REGISTRY}/${IMAGE_NAME}"
     DOCKER_CREDENTIALS_ID = 'harbor-cred'
     KUBECONFIG_CRED       = 'k3s-kubeconfig'
-    NAMESPACE             = 'default'
+    NAMESPACE             = 'rizurin'
   }
 
   stages {
@@ -45,13 +45,26 @@ pipeline {
       }
     }
 
-    stage('Deploy to k3s') {
+    stage('Ensure Deployment Exists') {
+      when { branch 'master' }
+      steps {
+        withCredentials([file(credentialsId: KUBECONFIG_CRED, variable: 'KUBECONFIG')]) {
+          sh """
+            kubectl apply -f k8s/
+          """
+        }
+      }
+    }
+
+    stage('Update Image') {
       when { branch 'master' }
       steps {
         withCredentials([file(credentialsId: KUBECONFIG_CRED, variable: 'KUBECONFIG')]) {
           sh """
             kubectl set image deployment/${APP_NAME} \
-              ${APP_NAME}=${IMAGE_FULL}:${IMAGE_TAG} -n ${NAMESPACE}
+              ${APP_NAME}=${IMAGE_FULL}:${IMAGE_TAG} \
+              -n ${NAMESPACE}
+
             kubectl rollout status deployment/${APP_NAME} -n ${NAMESPACE}
           """
         }

@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: rizurin-ingress
+  namespace: rizurin
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
