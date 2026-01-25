@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: rizurin-app
-          image: farizardin/rizurin-app:latest
+          image: rizurin/rizurin-app:latest
           ports:
             - containerPort: 3000
       imagePullSecrets:
