@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Banner from './pages/home/Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Profiles from './pages/home/Profiles';
+import Researches from './pages/home/Researches';
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
       <div style={{ height: "100vh", background: "#e4c5ff" }}>
         <div>
           <Profiles />
+        </div>
+        <div>
+          <Researches />
         </div>
         {/* <div style={{ paddingTop: "5%" }}>
           <Artworks />
