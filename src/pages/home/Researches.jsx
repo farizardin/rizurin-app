@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "../../styles/research-cards.css";
 
 import { useEffect, useState } from "react";
-import useHomeData from "../../hooks/useHomeData";
+import { useHomeData } from "../../context/HomeContext";
 
 /* Hook: fade in + slide up + zoom on scroll */
 function useInView(threshold = 0.15) {

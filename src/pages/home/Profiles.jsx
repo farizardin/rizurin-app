@@ -44,7 +44,7 @@ import { FaJava } from "react-icons/fa";
 import { DiDotnet, DiMsqlServer } from "react-icons/di";
 
 import { useEffect, useState } from "react";
-import useHomeData from "../../hooks/useHomeData";
+import { useHomeData } from "../../context/HomeContext";
 
 // Icon mapping for services based on service ID
 const SERVICE_ICONS = {
