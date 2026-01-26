@@ -44,6 +44,14 @@ import { FaJava } from "react-icons/fa";
 import { DiDotnet, DiMsqlServer } from "react-icons/di";
 
 import { useEffect, useState } from "react";
+import useHomeData from "../../hooks/useHomeData";
+
+// Icon mapping for services based on service ID
+const SERVICE_ICONS = {
+  1: FaBrain,    // AI & Deep Learning
+  2: FaCogs,     // Software Architecture
+  3: FaMagic,    // Creative Tech & Automation
+};
 
 /* Hook: fade in + slide up + zoom on scroll */
 function useInView(threshold = 0.15) {
@@ -272,69 +280,71 @@ function TechStack() {
 
 
 function Profiles() {
+  const { services, loading, error } = useHomeData();
+
+  // Fallback data in case API fails
+  const fallbackServices = [
+    {
+      id: 1,
+      title: "AI & Deep Learning",
+      descriptions: [
+        "Custom AI model development",
+        "LLM fine-tuning & inference optimization",
+        "Computer vision & audio processing",
+        "Research-grade experimentation",
+      ],
+    },
+    {
+      id: 2,
+      title: "Software Architecture",
+      descriptions: [
+        "Scalable backend system design",
+        "Microservices & cloud-native architecture",
+        "High-performance API development",
+        "System reliability & optimization",
+      ],
+    },
+    {
+      id: 3,
+      title: "Creative Tech & Automation",
+      descriptions: [
+        "AI VTuber systems",
+        "TTS with emotion synchronization",
+        "Automation pipelines",
+        "Experimental interactive systems",
+      ],
+    },
+  ];
+
+  // Use API data or fallback
+  const displayServices = services.length > 0 ? services : fallbackServices;
+
   return (
     <div className="div-profile-background">
       <div style={{ minHeight: "100vh", position: "relative", zIndex: 1 }}>
-        {/* <div className="center" style={{ padding: "20px" }}>
-          <p
-            style={{
-              background: "rgba(255, 255, 255, 0.5)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              paddingLeft: "25%",
-              paddingRight: "25%",
-              textAlign: "center",
-            }}
-          >
-            AI Engineer and Software Engineer. Proficient in making Deep
-            Learning (AI) model and designing Software Architecture. Anime
-            lovers who enjoy Bang Dream! & Love Live! series. I play multiple
-            music instruments like guitar, bass, and drum. Sometime I post a
-            music cover in my YouTube Channel. Love to play FPS game like CS2
-            and Valorant.
-          </p>
-        </div> */}
-
         <div style={{ padding: "40px" }}>
+          {loading && (
+            <div className="center" style={{ padding: "20px", color: "#fff" }}>
+              Loading services...
+            </div>
+          )}
+
+          {error && (
+            <div className="center" style={{ padding: "20px", color: "#ff6b6b" }}>
+              Error loading data: {error}
+            </div>
+          )}
+
           <Row className="g-4 justify-content-center">
-            <Col md={4}>
-              <ServiceCard
-                icon={FaBrain}
-                title="AI & Deep Learning"
-                desc={[
-                  "Custom AI model development",
-                  "LLM fine-tuning & inference optimization",
-                  "Computer vision & audio processing",
-                  "Research-grade experimentation",
-                ]}
-              />
-            </Col>
-
-            <Col md={4}>
-              <ServiceCard
-                icon={FaCogs}
-                title="Software Architecture"
-                desc={[
-                  "Scalable backend system design",
-                  "Microservices & cloud-native architecture",
-                  "High-performance API development",
-                  "System reliability & optimization",
-                ]}
-              />
-            </Col>
-
-            <Col md={4}>
-              <ServiceCard
-                icon={FaMagic}
-                title="Creative Tech & Automation"
-                desc={[
-                  "AI VTuber systems",
-                  "TTS with emotion synchronization",
-                  "Automation pipelines",
-                  "Experimental interactive systems",
-                ]}
-              />
-            </Col>
+            {displayServices.map((service) => (
+              <Col md={4} key={service.id}>
+                <ServiceCard
+                  icon={SERVICE_ICONS[service.id] || FaCogs}
+                  title={service.title}
+                  desc={service.descriptions}
+                />
+              </Col>
+            ))}
           </Row>
 
           {/* Tech stack icons */}

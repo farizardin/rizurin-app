@@ -1,13 +1,8 @@
 import React, { useRef } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import {
-  FaBrain,
-  FaCogs,
-} from "react-icons/fa";
 import "../../styles/research-cards.css";
 
 import { useEffect, useState } from "react";
+import useHomeData from "../../hooks/useHomeData";
 
 /* Hook: fade in + slide up + zoom on scroll */
 function useInView(threshold = 0.15) {
@@ -31,44 +26,6 @@ function useInView(threshold = 0.15) {
   }, [threshold]);
 
   return [ref, isVisible];
-}
-
-function ServiceCard({ icon: Icon, title, desc }) {
-  const cardRef = useRef(null);
-  const [viewRef, isVisible] = useInView();
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    card.style.setProperty("--x", `${x}px`);
-    card.style.setProperty("--y", `${y}px`);
-  };
-
-  return (
-    <div
-      ref={(el) => {
-        cardRef.current = el;
-        viewRef.current = el;
-      }}
-      className={`research-card scroll-animate ${isVisible ? "in-view" : ""}`}
-      onMouseMove={handleMouseMove}
-    >
-      <div className="research-icon">
-        <Icon />
-      </div>
-
-      <h3>{title}</h3>
-      <ul className="research-desc">
-        {desc.map((item, idx) => (
-          <li key={idx}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 function ResearchCard({ research }) {
@@ -96,7 +53,10 @@ function ResearchCard({ research }) {
 
 
 function Researches() {
-  const researches = [
+  const { researches, loading, error } = useHomeData();
+
+  // Fallback data in case API fails
+  const fallbackResearches = [
     {
       id: 1,
       title: "The Impact of Keypoints Normalization on SIBI Recognition using Modified Shift-GCN",
@@ -131,6 +91,9 @@ function Researches() {
     }
   ];
 
+  // Use API data or fallback
+  const displayResearches = researches.length > 0 ? researches : fallbackResearches;
+
   return (
     <div className="div-profile-background">
       <div style={{ minHeight: "100vh", position: "relative", zIndex: 1 }}>
@@ -139,8 +102,21 @@ function Researches() {
             Researches during Master College
           </h2>
         </div>
+
+        {loading && (
+          <div className="center" style={{ padding: "20px", color: "#fff" }}>
+            Loading researches...
+          </div>
+        )}
+
+        {error && (
+          <div className="center" style={{ padding: "20px", color: "#ff6b6b" }}>
+            Error loading data: {error}
+          </div>
+        )}
+
         <div className="research-container">
-          {researches.map((research) => (
+          {displayResearches.map((research) => (
             <ResearchCard key={research.id} research={research} />
           ))}
         </div>
