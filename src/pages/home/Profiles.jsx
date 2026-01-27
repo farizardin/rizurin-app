@@ -46,14 +46,12 @@ import { DiDotnet, DiMsqlServer } from "react-icons/di";
 import { useEffect, useState } from "react";
 import { useHomeData } from "../../context/HomeContext";
 
-// Icon mapping for services based on service ID
 const SERVICE_ICONS = {
-  1: FaBrain,    // AI & Deep Learning
-  2: FaCogs,     // Software Architecture
-  3: FaMagic,    // Creative Tech & Automation
+  1: FaBrain,
+  2: FaCogs,
+  3: FaMagic,
 };
 
-/* Hook: fade in + slide up + zoom on scroll */
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
