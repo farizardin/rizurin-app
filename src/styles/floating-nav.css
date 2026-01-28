@@ -1,0 +1,92 @@
+/* Floating Navigation Bar Styles */
+.floating-navbar-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: auto;
+  pointer-events: none; /* Let clicks pass through unless on the nav itself */
+}
+
+.floating-navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.floating-navbar:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-item a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-link-item a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-socials {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-social-icon {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.nav-social-icon:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .floating-navbar {
+    padding: 8px 20px;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-link-item a {
+    font-size: 11px;
+  }
+}

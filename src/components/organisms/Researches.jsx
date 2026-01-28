@@ -95,7 +95,7 @@ function Researches() {
   const displayResearches = researches.length > 0 ? researches : fallbackResearches;
 
   return (
-    <div className="div-profile-background">
+    <div id="researches" className="div-profile-background">
       <div style={{ minHeight: "100vh", position: "relative", zIndex: 1 }}>
         <div className="research-title-wrapper">
           <h2 className="research-title">
