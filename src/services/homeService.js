@@ -3,7 +3,7 @@
  * Business logic layer for home page data
  */
 
-import { getHomeData } from '../repositories/homeRepository';
+import { getHomeData, getVisitorStats as fetchVisitorStatsRepo } from '../repositories/homeRepository';
 
 /**
  * Transform service data from API response
@@ -77,9 +77,24 @@ export const getHeader = async () => {
     return data.header;
 };
 
+/**
+ * Get total visitor statistics
+ * @returns {Promise<number>} Total visitors count
+ */
+export const getVisitorStats = async () => {
+    const response = await fetchVisitorStatsRepo();
+
+    if (response.status !== 'success') {
+        throw new Error(response.message || 'Failed to fetch visitor stats');
+    }
+
+    return response.data.total_visitors;
+};
+
 export default {
     fetchHomePageData,
     getServices,
     getResearches,
     getHeader,
+    getVisitorStats,
 };

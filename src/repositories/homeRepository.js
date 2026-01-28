@@ -15,6 +15,16 @@ export const getHomeData = async () => {
     return response.data;
 };
 
+/**
+ * Fetch visitor statistics from API
+ * @returns {Promise<Object>} Raw API response data
+ */
+export const getVisitorStats = async () => {
+    const response = await apiClient.get(API_CONFIG.ENDPOINTS.STATS);
+    return response.data;
+};
+
 export default {
     getHomeData,
+    getVisitorStats,
 };

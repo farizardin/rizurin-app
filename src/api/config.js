@@ -11,6 +11,7 @@ export const API_CONFIG = {
     TIMEOUT: 10000, // 10 seconds
     ENDPOINTS: {
         HOME: '/index',
+        STATS: '/index/stats',
     },
 };
 
