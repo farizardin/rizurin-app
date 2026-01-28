@@ -38,6 +38,12 @@ const FloatingNavbar = () => {
                     <a href="https://www.twitch.tv/rizurin_ch" target="_blank" rel="noopener noreferrer" className="nav-social-icon">
                         <FaTwitch />
                     </a>
+                    <a href="https://github.com/farizardin" target="_blank" rel="noopener noreferrer" className="nav-social-icon">
+                        <FaGithub />
+                    </a>
+                    <a href="https://twitter.com/rizunaisu" target="_blank" rel="noopener noreferrer" className="nav-social-icon">
+                        <FaTwitter />
+                    </a>
                 </div>
             </nav>
         </div>
