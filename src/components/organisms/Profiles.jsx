@@ -318,7 +318,7 @@ function Profiles() {
   const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
-    <div className="div-profile-background">
+    <div id="profiles" className="div-profile-background">
       <div style={{ minHeight: "100vh", position: "relative", zIndex: 1 }}>
         <div style={{ padding: "40px" }}>
           {loading && (
