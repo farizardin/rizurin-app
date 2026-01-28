@@ -1,10 +1,8 @@
 import React from 'react';
 import { ParallaxBanner } from "react-scroll-parallax";
-import Foreground from '../../components/Foreground';
-import Background from '../../components/Background';
-// import Frame from '../../components/Frame';
-import Particle from '../../components/Particles';
-// import Dock from '../../components/Dock';
+import Foreground from '../atoms/Foreground';
+import Background from '../atoms/Background';
+import Particle from '../atoms/Particles';
 
 const Banner = () => {
   const background = {
