@@ -5,6 +5,11 @@ metadata:
   namespace: rizurin
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: rizurin-app
@@ -17,6 +22,20 @@ spec:
         - name: rizurin-app
           image: 192.168.8.60:8085/rizurin/rizurin-app:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 5
       imagePullSecrets:
         - name: harbor-secret
