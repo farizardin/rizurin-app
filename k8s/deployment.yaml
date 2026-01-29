@@ -22,7 +22,7 @@ spec:
         - name: rizurin-app
           image: 192.168.8.60:8085/rizurin/rizurin-app:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           readinessProbe:
             httpGet:
               path: /
