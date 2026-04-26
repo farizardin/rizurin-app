@@ -20,7 +20,8 @@ spec:
     spec:
       containers:
         - name: rizurin-app
-          image: 192.168.8.60:8085/rizurin/rizurin-app:latest
+          image: 192.168.8.51:5000/rizurin/prod/rizurin-app:placeholder
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           readinessProbe:
@@ -38,4 +39,4 @@ spec:
             periodSeconds: 15
             failureThreshold: 5
       imagePullSecrets:
-        - name: harbor-secret
+        - name: zot-secret
