@@ -4,7 +4,7 @@ name: default
 
 steps:
   # =========================
-  # BUILD IMAGE
+  # BUILD IMAGE (DRY RUN)
   # =========================
   - name: build_image
     image: plugins/docker
@@ -12,7 +12,7 @@ steps:
       registry: 192.168.8.51:5000
       repo: 192.168.8.51:5000/rizurin/dev/rizurin-app
       tags:
-        - ${DRONE_COMMIT_SHA:0:7}
+        - ${DRONE_COMMIT_SHA}
       dry_run: true
       insecure: true
     when:
@@ -29,7 +29,7 @@ steps:
       registry: 192.168.8.51:5000
       repo: 192.168.8.51:5000/rizurin/dev/rizurin-app
       tags:
-        - ${DRONE_COMMIT_SHA:0:7}
+        - ${DRONE_COMMIT_SHA}
       username:
         from_secret: docker_user
       password:
@@ -52,7 +52,7 @@ steps:
       registry: 192.168.8.51:5000
       repo: 192.168.8.51:5000/rizurin/prod/rizurin-app
       tags:
-        - ${DRONE_COMMIT_SHA:0:7}
+        - ${DRONE_COMMIT_SHA}
       username:
         from_secret: docker_user
       password:
@@ -83,7 +83,7 @@ steps:
         - master
 
   # =========================
-  # DEPLOY (SET IMAGE)
+  # DEPLOY
   # =========================
   - name: deploy
     image: bitnami/kubectl:latest
@@ -93,11 +93,7 @@ steps:
     commands:
       - mkdir -p ~/.kube
       - echo "$KUBECONFIG_CONTENT" > ~/.kube/config
-
-      - kubectl set image deployment/rizurin-app \
-        rizurin-app=192.168.8.51:5000/rizurin/prod/rizurin-app:${DRONE_COMMIT_SHA:0:7} \
-        -n rizurin
-
+      - kubectl set image deployment/rizurin-app rizurin-app=192.168.8.51:5000/rizurin/prod/rizurin-app:${DRONE_COMMIT_SHA} -n rizurin
       - kubectl rollout status deployment/rizurin-app -n rizurin
     when:
       event:
