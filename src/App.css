@@ -42,42 +42,32 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: #251b47;
+  background: #000000;
+  color: #e2e8f0;
 }
 
 .div-background {
-  background: #251b47;
+  background: #000000;
 }
-
-/* .div-profile-background {
-  background: #1b1229;
-} */
 
 .div-profile-background {
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  background: linear-gradient(0deg,
-      rgb(41, 16, 49) 0%,
-      rgba(8, 16, 19) 100%);
+  background-color: #050505;
+  background-image: 
+      radial-gradient(ellipse at top, rgba(30, 27, 75, 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(15, 23, 42, 0.6) 0%, transparent 60%);
 }
 
-/* Static radial blur light at bottom-left */
 .div-profile-background::before {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 1000px;
-  /* adjust size as needed */
-  height: 1000px;
-  background: radial-gradient(circle at bottom left,
-      rgba(64, 205, 224, 0.1) 0%,
-      rgba(64, 224, 208, 0) 100%);
-  filter: blur(120px);
-  opacity: 0.9;
-  pointer-events: none;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
   z-index: 0;
+  pointer-events: none;
 }
 
 
@@ -270,11 +260,10 @@ body {
    =========================== */
 
 .app-footer {
-  height: 300px;
-  background: linear-gradient(180deg,
-      #020617 0%,
-      #0a0a1f 50%,
-      #020617 100%);
+  height: auto;
+  min-height: 300px;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 
   color: rgba(255, 255, 255, 0.85);
   display: flex;
@@ -332,4 +321,25 @@ body {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+}
+
+/* Home Template Holo Background */
+.home-template-container {
+    min-height: 100vh;
+    background-color: #050505;
+    background-image: 
+        radial-gradient(ellipse at top, rgba(30, 27, 75, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom, rgba(15, 23, 42, 0.6) 0%, transparent 60%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.home-template-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    z-index: 0;
+    pointer-events: none;
 }

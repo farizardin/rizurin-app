@@ -12,6 +12,7 @@ export const API_CONFIG = {
     ENDPOINTS: {
         HOME: '/index',
         STATS: '/index/stats',
+        PROJECT_HOMELAB: '/project/homelab'
     },
 };
 

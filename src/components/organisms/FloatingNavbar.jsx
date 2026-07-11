@@ -1,10 +1,27 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaInstagram, FaYoutube, FaTwitter, FaTwitch, FaGithub } from 'react-icons/fa';
 import '../../styles/floating-nav.css';
 
 const FloatingNavbar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const scrollToSection = (e, id) => {
         e.preventDefault();
+
+        if (location.pathname !== '/') {
+            navigate('/');
+            // Wait for render then scroll
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+            return;
+        }
+
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -16,13 +33,22 @@ const FloatingNavbar = () => {
             <nav className="floating-navbar">
                 <ul className="nav-links">
                     <li className="nav-link-item">
-                        <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a>
+                        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className={location.pathname === '/' ? 'active' : ''}>Home</a>
                     </li>
                     <li className="nav-link-item">
                         <a href="#profiles" onClick={(e) => scrollToSection(e, 'profiles')}>Profiles</a>
                     </li>
                     <li className="nav-link-item">
                         <a href="#researches" onClick={(e) => scrollToSection(e, 'researches')}>Researches</a>
+                    </li>
+                    <li className="nav-link-item">
+                        <a href="/services" onClick={(e) => { e.preventDefault(); navigate('/services'); }} className={location.pathname === '/services' ? 'active' : ''}>Services</a>
+                    </li>
+                    <li className="nav-link-item">
+                        <a href="/homelab" onClick={(e) => { e.preventDefault(); navigate('/homelab'); }} className={location.pathname === '/homelab' ? 'active' : ''}>Homelab</a>
+                    </li>
+                    <li className="nav-link-item">
+                        <a href="/yuki" onClick={(e) => { e.preventDefault(); navigate('/yuki'); }} className={location.pathname === '/yuki' ? 'active' : ''}>AI Waifu</a>
                     </li>
                 </ul>
 

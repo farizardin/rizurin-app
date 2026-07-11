@@ -1,0 +1,372 @@
+.homelab-page-container {
+    min-height: 100vh;
+    background-color: #050505;
+    background-image: 
+        radial-gradient(ellipse at top, rgba(30, 27, 75, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(15, 23, 42, 0.8) 0%, transparent 50%);
+    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.homelab-particles-wrapper {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.homelab-page-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.homelab-main-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 120px 2rem 8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.homelab-hero {
+    text-align: center;
+    margin-bottom: 8rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+.homelab-hero-badge {
+    background: rgba(168, 192, 255, 0.05);
+    border: 1px solid rgba(168, 192, 255, 0.2);
+    color: #a8c0ff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(168, 192, 255, 0.15), inset 0 0 10px rgba(168, 192, 255, 0.05);
+}
+
+.homelab-hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.homelab-hero-title span {
+    background: linear-gradient(135deg, #a8c0ff 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
+}
+
+.homelab-hero-subtitle {
+    font-size: 1.3rem;
+    color: #94a3b8;
+    max-width: 700px;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.homelab-loader, .homelab-error {
+    display: flex;
+    justify-content: center;
+    padding: 8rem 0;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border-top-color: #a855f7;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.homelab-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.homelab-section {
+    display: block;
+    position: relative;
+}
+
+.homelab-icon-wrapper {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: inset 0 0 25px rgba(255,255,255,0.05), 0 15px 35px -10px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.homelab-icon-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    padding: 1px;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.4), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.homelab-bento-title-card h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: #f8fafc;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.homelab-section-line {
+    width: 50px;
+    height: 3px;
+    background: var(--section-color, #a855f7);
+    box-shadow: 0 0 15px var(--section-color, #a855f7);
+    border-radius: 3px;
+}
+
+/* Bento Box Grid */
+.homelab-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    grid-auto-flow: dense;
+}
+
+.homelab-bento-card {
+    background-color: rgba(20, 20, 25, 0.4);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+.homelab-bento-card:nth-child(1) { animation-delay: 0.1s; }
+.homelab-bento-card:nth-child(2) { animation-delay: 0.2s; }
+.homelab-bento-card:nth-child(3) { animation-delay: 0.3s; }
+.homelab-bento-card:nth-child(4) { animation-delay: 0.4s; }
+.homelab-bento-card:nth-child(5) { animation-delay: 0.5s; }
+.homelab-bento-card:nth-child(6) { animation-delay: 0.6s; }
+.homelab-bento-card:nth-child(7) { animation-delay: 0.7s; }
+.homelab-bento-card:nth-child(8) { animation-delay: 0.8s; }
+.homelab-bento-card:nth-child(9) { animation-delay: 0.9s; }
+.homelab-bento-card:nth-child(10) { animation-delay: 1.0s; }
+
+.homelab-bento-card.wide {
+    grid-column: span 2;
+}
+
+.homelab-bento-card.span-2 {
+    grid-column: span 2;
+}
+
+.homelab-bento-card.span-3 {
+    grid-column: span 3;
+}
+
+/* Title Card */
+.homelab-bento-title-card {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.6), rgba(15, 15, 20, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.homelab-bento-title-card .title-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+
+/* The Spotlight Glow Effect */
+.homelab-bento-card::before,
+.homelab-bento-card-border {
+    border-radius: 24px;
+    content: "";
+    opacity: 0;
+    position: absolute;
+    transition: opacity 500ms;
+    pointer-events: none;
+}
+
+/* The inner glowing background that tracks mouse */
+.homelab-bento-card::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 1;
+    inset: 0;
+}
+
+/* The glowing border that tracks mouse */
+.homelab-bento-card-border {
+    background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(168, 192, 255, 0.8),
+        transparent 40%
+    );
+    z-index: 2;
+    inset: 0;
+    padding: 1px; /* border thickness */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Static fallback border */
+.homelab-bento-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+#cards-container:hover .homelab-bento-card::before,
+#cards-container:hover .homelab-bento-card-border {
+    opacity: 1;
+}
+
+.homelab-bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.homelab-bento-content {
+    position: relative;
+    z-index: 3;
+    text-align: left;
+}
+
+.homelab-bento-dot {
+    width: 8px;
+    height: 8px;
+    background: #64748b;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.homelab-bento-card:hover .homelab-bento-dot {
+    background: var(--section-color, #a855f7);
+    box-shadow: 0 0 15px var(--section-color, #a855f7);
+}
+
+.homelab-bento-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+}
+
+.homelab-bento-content p {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .homelab-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .homelab-sticky-header {
+        position: relative;
+        top: 0;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    
+    .homelab-sticky-header h2 {
+        font-size: 2rem;
+    }
+
+    .homelab-section-line {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .homelab-main-content {
+        padding: 120px 1.5rem 5rem;
+    }
+    
+    .homelab-hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .homelab-bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .homelab-bento-card.span-2,
+    .homelab-bento-card.span-3,
+    .homelab-bento-title-card {
+        grid-column: span 1;
+    }
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
