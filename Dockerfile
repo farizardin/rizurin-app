@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 
 # copy deps first (cache friendly)
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 # copy source & build
 COPY . .
