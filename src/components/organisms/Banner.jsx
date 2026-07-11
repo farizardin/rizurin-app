@@ -52,7 +52,7 @@ const Banner = () => {
         </p>
         
         <div className="hero-actions fade-up delay-4">
-          <button className="btn-primary" onClick={() => window.location.href = '/homelab'}>
+          <button className="btn-primary" onClick={() => navigate('/homelab')}>
             Explore Homelab
           </button>
           

@@ -42,13 +42,13 @@ const FloatingNavbar = () => {
                         <a href="#researches" onClick={(e) => scrollToSection(e, 'researches')}>Researches</a>
                     </li>
                     <li className="nav-link-item">
-                        <a href="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</a>
+                        <a href="/services" onClick={(e) => { e.preventDefault(); navigate('/services'); }} className={location.pathname === '/services' ? 'active' : ''}>Services</a>
                     </li>
                     <li className="nav-link-item">
-                        <a href="/homelab" className={location.pathname === '/homelab' ? 'active' : ''}>Homelab</a>
+                        <a href="/homelab" onClick={(e) => { e.preventDefault(); navigate('/homelab'); }} className={location.pathname === '/homelab' ? 'active' : ''}>Homelab</a>
                     </li>
                     <li className="nav-link-item">
-                        <a href="/yuki" className={location.pathname === '/yuki' ? 'active' : ''}>AI Waifu</a>
+                        <a href="/yuki" onClick={(e) => { e.preventDefault(); navigate('/yuki'); }} className={location.pathname === '/yuki' ? 'active' : ''}>AI Waifu</a>
                     </li>
                 </ul>
 
