@@ -78,33 +78,45 @@
 
 @media (max-width: 768px) {
   .floating-navbar-container {
-    width: 90vw;
+    width: 95vw;
+    top: auto;
+    bottom: 20px;
   }
 
   .floating-navbar {
-    padding: 10px 15px;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: 12px 15px;
+    gap: 15px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
     border-radius: 20px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .floating-navbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
   }
   
   .nav-links {
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
   }
   
   .nav-link-item a {
-    font-size: 12px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 
   .nav-divider {
-    display: none;
+    display: block;
+    flex-shrink: 0;
   }
 
   .nav-socials {
-    gap: 15px;
+    gap: 12px;
+    flex-shrink: 0;
   }
 
   .nav-social-icon {
