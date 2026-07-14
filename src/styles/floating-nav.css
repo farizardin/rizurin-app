@@ -1,5 +1,5 @@
 /* Floating Navigation Bar Styles */
-.floating-navbar-container {
+.floating-navbar-wrapper {
   position: fixed;
   top: 20px;
   left: 50%;
@@ -7,6 +7,9 @@
   z-index: 9999;
   width: auto;
   pointer-events: none; /* Let clicks pass through unless on the nav itself */
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .floating-navbar {
@@ -45,6 +48,7 @@
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -76,50 +80,244 @@
   transform: scale(1.2);
 }
 
-@media (max-width: 768px) {
-  .floating-navbar-container {
-    width: 95vw;
-    top: auto;
-    bottom: 20px;
+.nav-mobile-header {
+  display: none; /* Hidden on desktop */
+}
+
+.nav-mobile-login-container {
+  display: none; /* Hidden on desktop */
+}
+
+.external-login-wrapper {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.external-login-wrapper.hidden {
+  display: none !important;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-toggle-btn {
+  display: none; /* Hidden on desktop */
+}
+
+.mobile-collapsed-login {
+  display: none;
+  pointer-events: auto; /* Ensure it can be clicked, overriding the wrapper's pointer-events: none */
+}
+
+@media (max-width: 1100px) {
+  .floating-navbar-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 100vw;
+    top: 20px;
+    left: 0;
+    transform: none;
+    bottom: auto;
+    justify-content: center;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .floating-navbar-wrapper.expanded {
+    gap: 0;
+  }
+
+  .mobile-collapsed-login {
+    display: block;
+    max-width: 150px;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mobile-collapsed-login.hidden {
+    display: block; /* use block so we can animate max-width to 0 */
+    max-width: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  /* Make sure the AuthButton inside it overrides its fixed position */
+  .mobile-collapsed-login .auth-button {
+    position: static !important;
+    margin: 0;
   }
 
   .floating-navbar {
-    padding: 12px 15px;
+    position: relative;
+    flex-direction: row;
+    padding: 10px 20px;
+    height: auto;
+    max-height: 60px; /* Allow enough height for padding + content */
+    max-width: 900px; /* enough to fit all content without snapping */
+    overflow: hidden;
+    box-sizing: border-box;
     gap: 15px;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    border-radius: 20px;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    align-items: center;
+    border-radius: 40px;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: max-content;
   }
-  
-  .floating-navbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+
+  .nav-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.3s ease;
   }
-  
+
   .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 15px;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
   }
   
   .nav-link-item a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .nav-divider {
+    font-size: 13px; /* Slightly smaller for mobile */
     display: block;
-    flex-shrink: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
   }
 
-  .nav-socials {
-    gap: 12px;
-    flex-shrink: 0;
+  /* Hide divider and socials when collapsed */
+  .nav-divider,
+  .nav-socials,
+  .nav-mobile-login-container {
+    display: none;
+  }
+
+  .nav-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    height: 100%;
+    transition: color 0.3s ease;
+  }
+
+  .nav-toggle-btn:hover {
+    color: #fff;
+  }
+
+  /* EXPANDED STATE */
+  .floating-navbar.expanded {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 15px;
+    border-radius: 30px;
+    max-height: 600px;
+    max-width: calc(100vw - 30px);
+    width: 100%;
+  }
+
+  .floating-navbar.expanded .nav-content {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 25px; /* space for absolute toggle btn */
+  }
+
+  .floating-navbar.expanded .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Show all links when expanded */
+  .floating-navbar.expanded .nav-link-item:nth-child(n+4) {
+    display: block;
+  }
+
+  .floating-navbar.expanded .nav-link-item a {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .floating-navbar.expanded .nav-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+  }
+
+  .floating-navbar.expanded .nav-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
   }
 
   .nav-social-icon {
-    font-size: 16px;
+    font-size: 18px;
+  }
+
+  .floating-navbar.expanded .nav-mobile-login-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+
+  .floating-navbar.expanded .nav-toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    margin-left: 0;
+    height: auto;
+    padding: 5px;
+  }
+
+  /* Override the auth-button CSS when it's inside the expanded navbar */
+  body.nav-expanded .floating-navbar.expanded .nav-mobile-login-container .auth-button {
+    display: flex !important;
+    position: static !important;
+    margin: 0 auto;
+    width: max-content;
+  }
+
+  .external-login-wrapper {
+    /* Ensure it aligns nicely on mobile */
   }
 }
+
+/* Dynamic progressive hiding of menus based on screen width */
+@media (max-width: 950px) {
+  .floating-navbar:not(.expanded) .nav-link-item:nth-child(n+6) {
+    display: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .floating-navbar:not(.expanded) .nav-link-item:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .floating-navbar:not(.expanded) .nav-link-item:nth-child(n+4) {
+    display: none;
+  }
+}
+

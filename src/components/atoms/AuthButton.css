@@ -36,10 +36,16 @@
     text-overflow: ellipsis;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
+    /* Hide the global auth button */
     .auth-button {
-        top: 20px;
-        right: 15px;
+        display: none !important;
+    }
+    
+    /* Only show it when it's inside our specific navbar containers */
+    .mobile-collapsed-login .auth-button,
+    .nav-mobile-login-container .auth-button {
+        display: flex !important;
         padding: 8px 15px;
         gap: 6px;
     }
@@ -47,4 +53,9 @@
         max-width: 80px;
         font-size: 12px;
     }
+}
+
+/* Hide the global auth button when mobile navbar is expanded */
+body.nav-expanded .auth-button {
+    display: none !important;
 }
