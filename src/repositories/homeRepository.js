@@ -24,7 +24,9 @@ export const getVisitorStats = async () => {
     return response.data;
 };
 
-export default {
+const homeRepository = {
     getHomeData,
     getVisitorStats,
 };
+
+export default homeRepository;

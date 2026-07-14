@@ -49,13 +49,7 @@ const FloatingNavbar = () => {
         }
     };
 
-    const getActiveMenuName = () => {
-        if (location.pathname === '/') return 'Home';
-        if (location.pathname === '/services') return 'Services';
-        if (location.pathname === '/homelab') return 'Homelab';
-        if (location.pathname === '/yuki') return 'AI Waifu';
-        return 'Menu';
-    };
+
 
     return (
         <div className={`floating-navbar-wrapper ${isExpanded ? 'expanded' : ''}`}>

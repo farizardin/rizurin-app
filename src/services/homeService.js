@@ -91,10 +91,12 @@ export const getVisitorStats = async () => {
     return response.data.total_visitors;
 };
 
-export default {
+const homeService = {
     fetchHomePageData,
     getServices,
     getResearches,
     getHeader,
     getVisitorStats,
 };
+
+export default homeService;

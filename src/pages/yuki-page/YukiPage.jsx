@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import FloatingNavbar from '../../components/organisms/FloatingNavbar';
 import Footer from '../../components/organisms/Footer';
 import Particle from '../../components/atoms/Particles';
-import { Sparkles, Brain, Mic, Volume2, Maximize, Database, Cpu, Activity, User } from 'lucide-react';
+import { Sparkles, Brain, Mic, Volume2, Database, Cpu, Activity, User } from 'lucide-react';
 import './YukiPage.css';
 
 const YukiPage = () => {

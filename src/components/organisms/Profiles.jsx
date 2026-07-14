@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { FaBrain, FaCogs, FaMagic, FaServer, FaCodeBranch, FaDatabase } from "react-icons/fa";
+import { FaBrain, FaMagic, FaServer, FaCodeBranch, FaDatabase } from "react-icons/fa";
 import { useHomeData } from "../../context/HomeContext";
 import "../../styles/profile-cards.css";
 
